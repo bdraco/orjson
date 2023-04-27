@@ -247,7 +247,8 @@ jobs:
         CARGO_UNSTABLE_SPARSE_REGISTRY: "true"
         ORJSON_ENABLE_WRITEEXT: "1"
         CFLAGS_s390x_unknown_linux_gnu: "-march=z10"
-        RUST_BACKTRACE: "1"
+        RUST_BACKTRACE: "full"
+        CARGO_PROFILE_RELEASE_BUILD_OVERRIDE_DEBUG: "true"
       with:
         maturin-version: v1.0.0-beta.7
         target: ${{ matrix.target.target }}
