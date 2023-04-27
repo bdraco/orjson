@@ -212,7 +212,7 @@ jobs:
           },
           {
             arch: 'armv6',
-            target: 'armv6', #'arm-unknown-linux-gnueabihf',
+            target: 'arm-unknown-linux-gnueabihf',
             cflags: '-Os',
             args: '--features=yyjson -Z build-std=std,panic_abort -Z build-std-features=panic_immediate_abort',
           },
@@ -255,6 +255,7 @@ jobs:
         rust-toolchain: nightly-2023-04-26
         rustup-components: rust-src
         manylinux: auto
+        container: "mdirkse/rust_armv6:latest"
         args: --release --strip --out=dist -i python${{ matrix.python.version }} ${{ matrix.target.args }}
     - uses: uraimo/run-on-arch-action@v2
       name: Test
