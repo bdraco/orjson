@@ -206,26 +206,31 @@ jobs:
         target: [
           {
             arch: 'aarch64',
+            target: 'aarch64',
             cflags: '-O2',
             args: '--features=yyjson', # build-std: aarch64-linux-gnu.so: undefined symbol: __aarch64_swp4_rel, likely QEMU?
           },
           {
-            arch: 'arm-unknown-linux-gnueabihf',
+            arch: 'armv6',
+            target: 'arm-unknown-linux-gnueabihf',
             cflags: '-Os',
             args: '--features=yyjson', # -Z build-std=std,panic_abort -Z build-std-features=panic_immediate_abort',
           },
           {
             arch: 'armv7',
+            target: 'armv7',
             cflags: '-Os',
             args: '--features=yyjson -Z build-std=std,panic_abort -Z build-std-features=panic_immediate_abort',
           },
           {
             arch: 'ppc64le',
+            target: 'ppc64le',
             cflags: '-O2',
             args: '--features=yyjson -Z build-std=std,panic_abort -Z build-std-features=panic_immediate_abort',
           },
           {
             arch: 's390x',
+            target: 's390x',
             cflags: '-O2 -march=z10',
             args: '--features=yyjson -Z build-std=std,panic_abort -Z build-std-features=panic_immediate_abort',
           },
@@ -245,7 +250,7 @@ jobs:
         RUST_BACKTRACE: "1"
       with:
         maturin-version: v1.0.0-beta.7
-        target: ${{ matrix.target.arch }}
+        target: ${{ matrix.target.target }}
         rust-toolchain: nightly-2023-04-26
         rustup-components: rust-src
         manylinux: auto
