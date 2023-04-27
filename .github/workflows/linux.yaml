@@ -246,7 +246,7 @@ jobs:
       with:
         maturin-version: v1.0.0-beta.7
         target: ${{ matrix.target.arch }}
-        rust-toolchain: nightly-2023-03-28
+        rust-toolchain: nightly-2023-04-26
         rustup-components: rust-src
         manylinux: auto
         args: --release --strip --out=dist -i python${{ matrix.python.version }} ${{ matrix.target.args }}
